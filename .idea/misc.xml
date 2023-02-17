@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.3312820512820513" />
+        <entry key="../../.gradle/caches/transforms-3/81477806d53ba19d0d772d201b78e50c/transformed/clevertap-android-sdk-4.6.1/res/layout/inapp_half_interstitial.xml" value="0.2006340579710145" />
+        <entry key="../../.gradle/caches/transforms-3/81477806d53ba19d0d772d201b78e50c/transformed/clevertap-android-sdk-4.6.1/res/layout/inapp_half_interstitial_image.xml" value="0.2006340579710145" />
+        <entry key="../../Library/Android/sdk/platforms/android-33/data/res/layout/simple_list_item_1.xml" value="0.1743659420289855" />
+        <entry key="app/src/main/res/layout/activity_app_inbox_webview.xml" value="0.21422101449275363" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3986160278320312" />
+        <entry key="app/src/main/res/layout/activity_native_display.xml" value="0.18115942028985507" />
+        <entry key="app/src/main/res/layout/activity_web_view.xml" value="0.2346014492753623" />
+        <entry key="app/src/main/res/layout/inbox_message.xml" value="0.2815093994140625" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
