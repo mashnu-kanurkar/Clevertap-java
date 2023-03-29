@@ -1,7 +1,14 @@
 package com.example.clevertapjava;
 
+import android.app.Activity;
 import android.app.Application;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.os.Bundle;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.clevertap.android.pushtemplates.PushTemplateNotificationHandler;
 import com.clevertap.android.sdk.ActivityLifecycleCallback;
@@ -14,13 +21,14 @@ import com.clevertap.android.sdk.pushnotification.CTPushNotificationListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class CleverTapJavaApp extends Application implements CTPushNotificationListener, CTInboxListener {
+public class CleverTapJavaApp extends Application implements CTPushNotificationListener, CTInboxListener, Application.ActivityLifecycleCallbacks {
     CleverTapAPI clevertapDefaultInstance;
     @Override
     public void onCreate() {
         ActivityLifecycleCallback.register(this);
         super.onCreate();
         CleverTapAPI.setNotificationHandler((NotificationHandler)new PushTemplateNotificationHandler());
+        CleverTapAPI.setDebugLevel(CleverTapAPI.LogLevel.VERBOSE);
         clevertapDefaultInstance = CleverTapAPI.getDefaultInstance(getApplicationContext());
         if (clevertapDefaultInstance != null) {
             clevertapDefaultInstance.setCTPushNotificationListener(this);
@@ -65,6 +73,51 @@ public class CleverTapJavaApp extends Application implements CTPushNotificationL
 
     @Override
     public void inboxMessagesDidUpdate() {
+
+    }
+
+    @Override
+    public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    public void onActivityStarted(@NonNull Activity activity) {
+
+    }
+
+    @Override
+    public void onActivityResumed(@NonNull Activity activity) {
+
+    }
+
+    @Override
+    public void onActivityPaused(@NonNull Activity activity) {
+
+    }
+
+    @Override
+    public void onActivityStopped(@NonNull Activity activity) {
+
+    }
+
+    @Override
+    public void onActivitySaveInstanceState(@NonNull Activity activity, @NonNull Bundle outState) {
+        Bundle payload = activity.getIntent().getExtras();
+        if (payload.containsKey("pt_id")&& payload.getString("pt_id").equals("pt_rating"))
+        {
+            NotificationManager nm = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
+            nm.cancel(payload.getInt("notificationId"));
+        }
+        if (payload.containsKey("pt_id")&& payload.getString("pt_id").equals("pt_product_display"))
+        {
+            NotificationManager nm = (NotificationManager) activity.getSystemService(Context.NOTIFICATION_SERVICE);
+            nm.cancel(payload.getInt("notificationId"));
+        }
+    }
+
+    @Override
+    public void onActivityDestroyed(@NonNull Activity activity) {
 
     }
 }
